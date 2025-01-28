@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #002855;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .results-header {
+            background-color: #004b8d;
+            color: #ffffff;
+            padding: 15px 20px;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .results-content {
+            padding: 20px;
+        }
+
+        .results-content p {
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #333333;
+        }
+
+        .results-list {
+            margin: 20px 0;
+            padding-left: 20px;
+            color: #333333;
+        }
+
+        .results-list li {
+            margin-bottom: 10px;
+        }
+
+        .results-list li span {
+            font-weight: bold;
+            color: #004b8d;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #f4f4f9;
+            color: #666666;
+            font-size: 0.875rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: #004b8d;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        JDE Database Comparison Results
+    </header>
+    <div class="container">
+        <div class="results-header">
+            Comparison Summary
+        </div>
+        <div class="results-content">
+            <p><strong>Model Item:</strong> {{ model_item }}</p>
+            <p><strong>New Item:</strong> {{ new_item }}</p>
+            <p><strong>Results:</strong></p>
+            {% if differences %}
+                <ul class="results-list">
+                    {% for diff in differences %}
+                        <li>{{ diff }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No differences found.</p>
+            {% endif %}
+            <p><a href="/">Return to Comparison Tool</a></p>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 JDE Tools. All Rights Reserved.
+    </footer>
+</body>
+</html>

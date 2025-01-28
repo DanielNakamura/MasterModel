@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDE Database Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #002855;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .form-header {
+            background-color: #004b8d;
+            color: #ffffff;
+            padding: 15px 20px;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        form {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #004b8d;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #002855;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #f4f4f9;
+            color: #666666;
+            font-size: 0.875rem;
+        }
+
+        .notice {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .notice strong {
+            color: #004b8d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        JDE Database Comparison Tool
+    </header>
+    <div class="container">
+        <div class="form-header">
+            Compare Items and Generate SQL Commands
+        </div>
+        <form action="/submit" method="POST">
+            <div class="form-group">
+                <label for="model_item">Model Item:</label>
+                <select name="model_item" id="model_item" required>
+                    {% for item in items %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="new_item">New Item:</label>
+                <input type="text" name="new_item" id="new_item" placeholder="Enter the new item number" required>
+            </div>
+            <button type="submit">Compare and Generate SQL</button>
+        </form>
+        <div class="notice">
+            <strong>Note:</strong> Ensure the model item exists in the database to generate accurate SQL commands.
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 JDE Tools. All Rights Reserved.
+    </footer>
+</body>
+</html>
